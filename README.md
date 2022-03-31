@@ -1,0 +1,1 @@
+# sysroot_qt5.15.0_binaries_armv6zk_rpizero_bullseye_gcc10.3
