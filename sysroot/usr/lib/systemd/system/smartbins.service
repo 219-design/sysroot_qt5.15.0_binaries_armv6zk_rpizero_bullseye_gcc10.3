@@ -1,0 +1,10 @@
+[Unit]
+Description=The Raspberry Pi GUI to run to detect and report product being dispensed.
+After=multi-user.target
+
+[Service]
+ExecStart=/opt/purcell/startup.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

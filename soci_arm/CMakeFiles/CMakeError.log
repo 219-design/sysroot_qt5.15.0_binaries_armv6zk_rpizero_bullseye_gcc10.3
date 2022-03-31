@@ -1,0 +1,140 @@
+Determining if the __i386__ exist failed with the following output:
+Change Dir: /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_794e7/fast && /usr/bin/make -f CMakeFiles/cmTC_794e7.dir/build.make CMakeFiles/cmTC_794e7.dir/build
+make[1]: Entering directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_794e7.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_794e7.dir/CheckSymbolExists.cxx.o -c /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function 'int main(int, char**)':
+/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:7:19: error: '__i386__' was not declared in this scope
+   return ((int*)(&__i386__))[argc];
+                   ^~~~~~~~
+/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:7:19: note: suggested alternative: '__LINE__'
+   return ((int*)(&__i386__))[argc];
+                   ^~~~~~~~
+                   __LINE__
+make[1]: *** [CMakeFiles/cmTC_794e7.dir/build.make:66: CMakeFiles/cmTC_794e7.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_794e7/fast] Error 2
+
+
+File /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __i386__
+  return ((int*)(&__i386__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __x86_64__ exist failed with the following output:
+Change Dir: /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_83090/fast && /usr/bin/make -f CMakeFiles/cmTC_83090.dir/build.make CMakeFiles/cmTC_83090.dir/build
+make[1]: Entering directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_83090.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_83090.dir/CheckSymbolExists.cxx.o -c /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function 'int main(int, char**)':
+/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:7:19: error: '__x86_64__' was not declared in this scope
+   return ((int*)(&__x86_64__))[argc];
+                   ^~~~~~~~~~
+make[1]: *** [CMakeFiles/cmTC_83090.dir/build.make:66: CMakeFiles/cmTC_83090.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_83090/fast] Error 2
+
+
+File /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __x86_64__
+  return ((int*)(&__x86_64__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a07ba/fast && /usr/bin/make -f CMakeFiles/cmTC_a07ba.dir/build.make CMakeFiles/cmTC_a07ba.dir/build
+make[1]: Entering directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a07ba.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_a07ba.dir/src.c.o   -c /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a07ba
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a07ba.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_a07ba.dir/src.c.o  -o cmTC_a07ba 
+/usr/bin/ld: CMakeFiles/cmTC_a07ba.dir/src.c.o: in function `main':
+src.c:(.text+0x40): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x4c): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x5c): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_a07ba.dir/build.make:87: cmTC_a07ba] Error 1
+make[1]: Leaving directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_a07ba/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4452c/fast && /usr/bin/make -f CMakeFiles/cmTC_4452c.dir/build.make CMakeFiles/cmTC_4452c.dir/build
+make[1]: Entering directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4452c.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_4452c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4452c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4452c.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_4452c.dir/CheckFunctionExists.c.o  -o cmTC_4452c  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_4452c.dir/build.make:87: cmTC_4452c] Error 1
+make[1]: Leaving directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_4452c/fast] Error 2
+
+
+
+Performing C++ SOURCE FILE Test HAVE_MYSQL_OPT_EMBEDDED_CONNECTION failed with the following output:
+Change Dir: /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0b8a6/fast && /usr/bin/make -f CMakeFiles/cmTC_0b8a6.dir/build.make CMakeFiles/cmTC_0b8a6.dir/build
+make[1]: Entering directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0b8a6.dir/src.cxx.o
+/usr/bin/c++   -I/usr/include/mariadb  -fPIC -Werror -Wno-error=parentheses -Wall -Wextra -Wpointer-arith -Wcast-align -Wcast-qual -Wfloat-equal -Woverloaded-virtual -Wredundant-decls -Wno-long-long -std=c++11  -Wno-variadic-macros -DHAVE_MYSQL_OPT_EMBEDDED_CONNECTION   -o CMakeFiles/cmTC_0b8a6.dir/src.cxx.o -c /home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/src.cxx
+/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/src.cxx: In function 'int main()':
+/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp/src.cxx:2:18: error: unused variable 'i' [-Werror=unused-variable]
+ int main() { int i = MYSQL_OPT_USE_EMBEDDED_CONNECTION; }
+                  ^
+cc1plus: all warnings being treated as errors
+make[1]: *** [CMakeFiles/cmTC_0b8a6.dir/build.make:66: CMakeFiles/cmTC_0b8a6.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/pi/sbins_sys_system/build/soci_arm/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_0b8a6/fast] Error 2
+
+
+Source file was:
+#include <mysql.h>
+int main() { int i = MYSQL_OPT_USE_EMBEDDED_CONNECTION; }
